@@ -1,9 +1,12 @@
 " use syntax highlighting
-syntax on
+syntax enable
+set background=dark
+colorscheme solarized
 filetype on
 
-set background=dark
-colorscheme night
+" use C++11 syntax file
+au BufNewFile,BufRead *.cpp set syntax=cpp11
+au BufNewFile,BufRead *.hpp set syntax=cpp11
 
 set showmode
 set cursorline " highlight current line
@@ -16,11 +19,14 @@ set colorcolumn=80
 
 " indenting
 set autoindent
+if has("autocmd")
+   filetype plugin indent on
+endif
 set expandtab
 set smarttab
 
-set shiftwidth=3
-set softtabstop=3
+set shiftwidth=2
+set softtabstop=2
 
 set hlsearch
 
@@ -39,10 +45,5 @@ inoremap jj <Esc>
 " map {{ to open block
 inoremap {{ {<CR>}<Esc>O
 
-" enable omnifunc
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-
 " map various split window things
-nmap ;; <C-w>w
-nmap ;s :vsplit<CR>
+nmap ;; :vsplit<CR>
